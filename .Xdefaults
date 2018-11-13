@@ -1,0 +1,109 @@
+   Xft.dpi: 168
+   ! URxvt.font: -*-terminus-*-*-*-*-24-*-*-*-*-*-*-*
+   ! URxvt.boldFont: -*-terminus-*-*-*-*-24-*-*-*-*-*-*-*
+    URxvt.font: xft:ProFontWindows Nerd Font Mono:style=Regular:size=9
+    xterm*font: xft:ProFontWindows Nerd Font Mono:style=Regular:size=9
+    URxvt.boldFont: xft:ProFontWindows Nerd Font:style=Regular:size=9
+
+    !Options
+    URxvt.termName:rxvt-256color
+    URxvt*urgentOnBell: true
+    URxvt*visualBell: true
+    URxvt*skipBuiltinGlyphs: true
+    URxvt*termName: rxvt-unicode
+    URxvt*borderless: 1
+    URxvt*scrollBar: false
+    URxvt*saveLines: 5000
+
+    URxvt*utf8: 2
+    URxvt.utf8: 2
+    URxvt.transparent: true
+    !URxvt.tintColor: #e8e8e8
+    URxvt.shading: 35
+
+    URxvt.perl-ext-common:      default,clipboard,url-select,keyboard-select
+    URxvt.url-select.launcher:  firefox
+    URxvt.url-select.underline: true
+    URxvt.keysym.M-u:           perl:url-select:select_next
+    URxvt.keysym.M-Escape:      perl:keyboard-select:activate
+    URxvt.keysym.M-s:           perl:keyboard-select:search
+   
+ !Links
+    URxvt*perl-ext-common: matcher, font-size
+    URxvt*urlLauncher: firefox
+    URxvt*matcher.button: 1
+    URxvt*matcher.pattern.1: \\bwww\\.[\\w-]+\\.[\\w./?&@URxvt-]*[\\w/-]
+
+    !Cursor
+    URxvt*cursorColor: #A36666
+    URxvt*cursorBlink: true
+   !!Font
+   !URxvt.perl-lib:                     /home/chupy35/scripts/urxvt-font
+   !URxvt.keysym.Control-Shift-Up:      perl:font:increment
+   !URxvt.keysym.Control-Shift-Down:    perl:font:decrement
+   !URxvt.perl-ext-common:              font
+
+
+
+URxvt.keysym.C-Up:     font-size:increase
+URxvt.keysym.C-Down:   font-size:decrease
+URxvt.keysym.C-S-Up:   font-size:incglobal
+URxvt.keysym.C-S-Down: font-size:decglobal
+URxvt.keysym.C-equal:  font-size:reset
+URxvt.keysym.C-slash:  font-size:show
+
+
+    ! Terminal Color Scheme: dark
+    !
+    ! Maintainer: Jason W Ryan <http://jasonwryan.com/>
+    !
+    ! higher contrast background
+    !*background: #000000
+    !background: #121212
+    !foreground: #e9cfaa
+    ! black dark/light
+    ! higher contrast black dark/light
+    !*color0:     #121212
+    !*color8:     #3d3d3d
+    *color0:     #3d3d3d
+    *color8:     #5e5e5e
+    ! red dark/light
+    *color1:     #8a2f58
+    *color9:     #cf4f88
+    ! green dark/light
+    *color2:     #287373
+    *color10:    #53a6a6
+    ! yellow dark/light
+    *color3:     #914e89
+    *color11:    #bf85cc
+    ! blue dark/light
+    *color4:     #395573
+    *color12:    #4779b3
+    ! magenta dark/light
+    *color5:     #5e468c
+    *color13:    #7f62b3
+    ! cyan dark/light
+    *color6:     #2b7694
+    *color14:    #47959e
+    ! white dark/light
+    *color7:     #899ca1
+    *color15:    #c0c0c0
+    !!Colors
+    *foreground: #c19a7b
+    *background: #ffe9e9
+    !*color0: #363636
+    !*color8: #424242
+    !*color1: #C37561
+    !*color9: #D19485
+    !*color2: #A0A57E
+    !*color10: #7f8264
+    !*color3: #b58b62
+    !*color11: #DEBC9C
+    !*color4: #1d2b41
+    !*color12: #98A1B9
+    !*color5: #AB716D
+    !*color13: #b4d2c8
+    !*color6: #98B9B1
+    !*color14: #769293
+    !*color7: #9ba0a7
+    !*color15: #6e7383
