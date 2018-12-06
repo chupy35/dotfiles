@@ -1,4 +1,5 @@
-colorscheme mirodark
+let mapleader ="ñ"
+colors dracula
 syntax on
 set number
 set guifont=ProFont\ 10
@@ -9,6 +10,45 @@ nnoremap <C-H> <C-W><C-H>
 noremap <F12> :w \| !clear && echo "% is running..." && python3 %<CR>
 let g:pymode_virtualenv = 1 
 let g:pymode_python = 'python'
+
+" autocomplection
+set wildmode=longest,list,full
+set wildmenu
+
+" Open corresponding .pdf
+map <leader>p :!opout <c-r>%<CR><CR>
+
+" Compile document
+map <leader>c :!groff -ms review.ms -T pdf > review.pdf <c-r>%<CR>
+
+" Replace all is aliased to S.
+map <leader>r :%s//g<Left><Left>
+
+" groff files automatically detected
+autocmd BufRead,BufNewFile *.ms,*.me,*.mom set filetype=groff
+
+
+" Spell-check set to F6:
+map <leader>s :setlocal spell! spelllang=en_us<CR>
+
+" Copy selected text to system clipboard (requires gvim installed):
+vnoremap <C-c> "*Y :let @+=@*<CR>
+map <C-p> "+P
+
+" Transparent background with ctrl T
+let t:is_transparent = 0
+function! Toggle_transparent()
+    if t:is_transparent == 0
+        hi Normal guibg=NONE ctermbg=NONE
+        let t:is_transparent = 1
+    else
+        set background=dark
+        let t:is_tranparent = 0
+    endif
+endfunction
+nnoremap <C-t> : call Toggle_transparent()<CR>
+
+au BufRead /tmp/mutt-* set tw=72
 
 " Enable folding
 set foldmethod=indent

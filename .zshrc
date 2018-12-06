@@ -31,7 +31,7 @@ setopt hist_find_no_dups hist_ignore_dups hist_verify
 setopt prompt_subst
 setopt autocd
 
-
+nplayer () (nc -kluw 1 127.0.0.1 5555 > /tmp/mpd.fifo & trap "kill $!" EXIT; ncmpcpp)
 #export WORKON_HOME=~/.virtualenvs
 
 #source /usr/bin/virtualenv
