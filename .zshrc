@@ -1,9 +1,115 @@
-#
-# ~/.zshrc
-#
+# If you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-# Options {{{
-# -----------------------------------------------------------------------------
+# Path to your oh-my-zsh installation.
+  export ZSH="/home/chupy35/.oh-my-zsh"
+
+# Set name of the theme to load --- if set to "random", it will
+# load a random theme each time oh-my-zsh is loaded, in which case,
+# to know which specific one was loaded, run: echo $RANDOM_THEME
+# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
+#
+#ZSH_THEME="imp"
+ZSH_THEME="powerlevel10k/powerlevel10k"
+POWERLEVEL9K_MODE="nerdfont-complete"
+POWERLEVEL9K_DISABLE_RPROMPT=true
+POWERLEVEL9K_PROMPT_ON_NEWLINE=true
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir vcs status root_indicator battery time background_jobs)
+POWERLEVEL9K_BATTERY_STAGES=($'\u2581 ' $'\u2582 ' $'\u2583 ' $'\u2584 ' $'\u2585 ' $'\u2586 ' $'\u2587 ' $'\u2588 ')
+POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="╰──▶ "
+POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="╭─"
+POWERLEVEL9K_TIME_FORMAT="%D{%H:%M}"
+# Enable caching of parts of the prompt to make rendering much faster.
+POWERLEVEL9K_USE_CACHE=true
+# Enable alternative implementation for the vcs prompt. It's much faster but it only supports git.
+# Tell it to not scan for dirty files in repos with over 4k files.
+# Adjust this path depending on where you normally source powerlevel9k.zsh-theme from.
+
+
+# Set list of themes to pick from when loading at random
+# Setting this variable when ZSH_THEME=random will cause zsh to load
+# a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
+# If set to an empty array, this variable will have no effect.
+# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
+
+# Uncomment the following line to use case-sensitive completion.
+# CASE_SENSITIVE="true"
+
+# Uncomment the following line to use hyphen-insensitive completion.
+# Case-sensitive completion must be off. _ and - will be interchangeable.
+# HYPHEN_INSENSITIVE="true"
+
+# Uncomment the following line to disable bi-weekly auto-update checks.
+# DISABLE_AUTO_UPDATE="true"
+
+# Uncomment the following line to change how often to auto-update (in days).
+# export UPDATE_ZSH_DAYS=13
+
+# Uncomment the following line to disable colors in ls.
+# DISABLE_LS_COLORS="true"
+
+# Uncomment the following line to disable auto-setting terminal title.
+# DISABLE_AUTO_TITLE="true"
+
+# Uncomment the following line to enable command auto-correction.
+# ENABLE_CORRECTION="true"
+
+# Uncomment the following line to display red dots whilst waiting for completion.
+# COMPLETION_WAITING_DOTS="true"
+
+# Uncomment the following line if you want to disable marking untracked files
+# under VCS as dirty. This makes repository status check for large repositories
+# much, much faster.
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+# Uncomment the following line if you want to change the command execution time
+# stamp shown in the history command output.
+# You can set one of the optional three formats:
+# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# or set a custom format using the strftime function format specifications,
+# see 'man strftime' for details.
+# HIST_STAMPS="mm/dd/yyyy"
+
+# Would you like to use another custom folder than $ZSH/custom?
+# ZSH_CUSTOM=/path/to/new-custom-folder
+
+# Which plugins would you like to load?
+# Standard plugins can be found in ~/.oh-my-zsh/plugins/*
+# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+plugins=(vi-mode)
+
+source $ZSH/oh-my-zsh.sh
+
+# User configuration
+
+# export MANPATH="/usr/local/man:$MANPATH"
+
+# You may need to manually set your language environment
+# export LANG=en_US.UTF-8
+
+# Preferred editor for local and remote sessions
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export EDITOR='vim'
+# else
+#   export EDITOR='mvim'
+# fi
+
+# Compilation flags
+# export ARCHFLAGS="-arch x86_64"
+
+# ssh
+# export SSH_KEY_PATH="~/.ssh/rsa_id"
+
+# Set personal aliases, overriding those provided by oh-my-zsh libs,
+# plugins, and themes. Aliases can be placed here, though oh-my-zsh
+# users are encouraged to define aliases within the ZSH_CUSTOM folder.
+# For a full list of active aliases, run `alias`.
+#
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
 #
 
 stty -ixon
@@ -59,202 +165,6 @@ zstyle -e ':completion:*:approximate:*' max-errors 'reply=($((($#PREFIX+$#SUFFIX
 # kill
 zstyle ':completion:*:*:*:*:processes' command "ps -u $USER -o pid,user,comm -w -w"
 zstyle ':completion:*:*:kill:*:processes' list-colors "=(#b) #([0-9]#) ([0-9a-z-]#)*=$color[green]=0=$color[black]"
-zstyle ':completion:*:*:kill:*' force-list always
-
-# }}}
-# Prompt {{{
-# -----------------------------------------------------------------------------
-
-# -----------------------
-# Colors in TTY (Zenburn)
-# -----------------------
-if [[ $TERM == "linux" ]]; then
-echo -en "\e]P01e2320" # zen-black (norm. black)
-echo -en "\e]P8709080" # zen-bright-black (norm. darkgrey)
-echo -en "\e]P1705050" # zen-red (norm. darkred)
-echo -en "\e]P9dca3a3" # zen-bright-red (norm. red)
-echo -en "\e]P260b48a" # zen-green (norm. darkgreen)
-echo -en "\e]PAc3bf9f" # zen-bright-green (norm. green)
-echo -en "\e]P3dfaf8f" # zen-yellow (norm. brown)
-echo -en "\e]PBf0dfaf" # zen-bright-yellow (norm. yellow)
-echo -en "\e]P4506070" # zen-blue (norm. darkblue)
-echo -en "\e]PC94bff3" # zen-bright-blue (norm. blue)
-echo -en "\e]P5dc8cc3" # zen-purple (norm. darkmagenta)
-echo -en "\e]PDec93d3" # zen-bright-purple (norm. magenta)
-echo -en "\e]P68cd0d3" # zen-cyan (norm. darkcyan)
-echo -en "\e]PE93e0e3" # zen-bright-cyan (norm. cyan)
-echo -en "\e]P7dcdccc" # zen-white (norm. lightgrey)
-echo -en "\e]PFffffff" # zen-bright-white (norm. white)
-fi
-
-# ------
-# Prompt 
-# ------
-function precmd {
-
-    local TERMWIDTH
-    (( TERMWIDTH = ${COLUMNS} - 1 ))
-
-
-    ###
-    # Truncate the path if it's too long.
-    
-    PR_FILLBAR=""
-    PR_PWDLEN=""
-    
-    local promptsize=${#${(%):---(%n@%m:%l)---()--}}
-    local pwdsize=${#${(%):-%~}}
-    
-    if [[ "$promptsize + $pwdsize" -gt $TERMWIDTH ]]; then
-        ((PR_PWDLEN=$TERMWIDTH - $promptsize))
-    else
-    PR_FILLBAR="\${(l.(($TERMWIDTH - ($promptsize + $pwdsize)))..${PR_HBAR}.)}"
-    fi
-
-
-    ###
-    # Get APM info.
-
-    if which ibam > /dev/null; then
-    PR_APM_RESULT=`ibam --percentbattery`
-    elif which apm > /dev/null; then
-    PR_APM_RESULT=`apm`
-    fi
-}
-
-
-setopt extended_glob
-preexec () {
-    if [[ "$TERM" == "screen" ]]; then
-    local CMD=${1[(wr)^(*=*|sudo|-*)]}
-    echo -n "\ek$CMD\e\\"
-    fi
-}
-
-
-setprompt () {
-    ###
-    # Need this so the prompt will work.
-
-    setopt prompt_subst
-
-
-    ###
-    # See if we can use colors.
-
-    autoload colors zsh/terminfo
-    if [[ "$terminfo[colors]" -ge 8 ]]; then
-    colors
-    fi
-    for color in RED GREEN YELLOW BLUE MAGENTA CYAN WHITE; do
-    eval PR_$color='%{$terminfo[bold]$fg[${(L)color}]%}'
-    eval PR_LIGHT_$color='%{$fg[${(L)color}]%}'
-    (( count = $count + 1 ))
-    done
-    PR_NO_COLOUR="%{$terminfo[sgr0]%}"
-
-
-    ###
-    # See if we can use extended characters to look nicer.
-    
-    typeset -A altchar
-    set -A altchar ${(s..)terminfo[acsc]}
-    PR_SET_CHARSET="%{$terminfo[enacs]%}"
-    PR_SHIFT_IN="%{$terminfo[smacs]%}"
-    PR_SHIFT_OUT="%{$terminfo[rmacs]%}"
-    PR_HBAR=${altchar[q]:--}
-    PR_ULCORNER=${altchar[l]:--}
-    PR_LLCORNER=${altchar[m]:--}
-    PR_LRCORNER=${altchar[j]:--}
-    PR_URCORNER=${altchar[k]:--}
-
-    
-    ###
-    # Decide if we need to set titlebar text.
-    
-    case $TERM in
-    xterm*)
-        PR_TITLEBAR=$'%{\e]0;%(!.-=*[ROOT]*=- | .)%n@%m:%~ | ${COLUMNS}x${LINES} | %y\a%}'
-        ;;
-    screen)
-        PR_TITLEBAR=$'%{\e_screen \005 (\005t) | %(!.-=[ROOT]=- | .)%n@%m:%~ | ${COLUMNS}x${LINES} | %y\e\\%}'
-        ;;
-    *)
-        PR_TITLEBAR=''
-        ;;
-    esac
-    
-    
-    ###
-    # Decide whether to set a screen title
-    if [[ "$TERM" == "screen" ]]; then
-    PR_STITLE=$'%{\ekzsh\e\\%}'
-    else
-    PR_STITLE=''
-    fi
-    
-    
-    ###
-    # APM detection
-    
-    if which ibam > /dev/null; then
-    PR_APM='$PR_RED${${PR_APM_RESULT[(f)1]}[(w)-2]}%%(${${PR_APM_RESULT[(f)3]}[(w)-1]})$PR_LIGHT_BLUE:'
-    elif which apm > /dev/null; then
-    PR_APM='$PR_RED${PR_APM_RESULT[(w)5,(w)6]/\% /%%}$PR_LIGHT_BLUE:'
-    else
-    PR_APM=''
-    fi
-    
-    
-    ###
-    # Finally, the prompt.
-
-    PROMPT='$PR_SET_CHARSET$PR_STITLE${(e)PR_TITLEBAR}\
-$PR_CYAN$PR_SHIFT_IN$PR_ULCORNER$PR_CYAN$PR_HBAR$PR_SHIFT_OUT(\
-$PR_BLUE%(!.%SROOT%s.%n)$PR_BLUE@%m:%l\
-$PR_CYAN)$PR_SHIFT_IN$PR_HBAR$PR_CYAN$PR_HBAR${(e)PR_FILLBAR}$PR_CYAN$PR_HBAR$PR_SHIFT_OUT(\
-$PR_GREEN%$PR_PWDLEN<...<%~%<<\
-$PR_CYAN)$PR_SHIFT_IN$PR_HBAR$PR_CYAN$PR_URCORNER$PR_SHIFT_OUT\
-
-$PR_CYAN$PR_SHIFT_IN$PR_LLCORNER$PR_CYAN$PR_HBAR$PR_SHIFT_OUT(\
-%(?..$PR_LIGHT_RED%?$PR_CYAN:)\
-${(e)PR_APM}$PR_BLUE%D{%H:%M}\
-$PR_LIGHT_CYAN:%(!.$PR_RED.$PR_WHITE)%#$PR_CYAN)$PR_SHIFT_IN$PR_HBAR$PR_SHIFT_OUT\
-$PR_CYAN$PR_SHIFT_IN$PR_HBAR$PR_SHIFT_OUT\
-$PR_CYAN> '
-
-    RPROMPT=' $PR_CYAN$PR_SHIFT_IN$PR_HBAR$PR_CYAN$PR_HBAR$PR_SHIFT_OUT\
-($PR_BLUE%D{%a,%b%d}$PR_CYAN)$PR_SHIFT_IN$PR_HBAR$PR_CYAN$PR_LRCORNER$PR_SHIFT_OUT$PR_NO_COLOUR'
-
-    PS2='$PR_CYAN$PR_SHIFT_IN$PR_HBAR$PR_SHIFT_OUT\
-$PR_BLUE$PR_SHIFT_IN$PR_HBAR$PR_SHIFT_OUT(\
-$PR_LIGHT_GREEN%_$PR_BLUE)$PR_SHIFT_IN$PR_HBAR$PR_SHIFT_OUT\
-$PR_CYAN$PR_SHIFT_IN$PR_HBAR$PR_SHIFT_OUT$PR_NO_COLOUR '
-}
-
-setprompt
-
-
-# }}}
-# Title {{{
-# -----------------------------------------------------------------------------
-
-case "$TERM" in
-  (x|a|ml|dt|E)term*|(u|)rxvt*)
-    precmd () { print -Pn "\e]0;%n@%M:%~\a" }
-    preexec () { print -Pn "\e]0;%n@%M:%~ ($1)\a" }
-    ;;
-  screen*)
-    precmd () {
-      print -Pn "\e]83;title - \"$1\"\a"
-      print -Pn "\e]0;%n@%M:%~\a"
-    }
-    preexec () {
-      print -Pn "\e]83;title - \"$1\"\a"
-      print -Pn "\e]0;%n@%M:%~ ($1)\a"
-    }
-    ;;
-esac
 
 # }}}
 # Keybindings {{{
@@ -320,6 +230,8 @@ alias img="cd /home/chupy35/imagenes/"
 alias mu="cd /home/chupy35/Music/"
 alias dbx="cd /home/chupy35/Dropbox/"
 alias vid="cd /home/chupy35/Vídeos/"
+alias sshr1="ssh 132.207.28.119"
+alias sshr2="ssh 132.207.170.60"
 
 # }}}
 # Extract {{{
@@ -477,3 +389,21 @@ function sproxy_on() {
 #export PATH="${PATH}:$(ruby -e "puts Gem.user_dir")/bin"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# WAL and colorscheme
+#
+# # Import colorscheme from 'wal' asynchronously
+# &   # Run the process in the background.
+# ( ) # Hide shell job control messages.
+(cat ~/.cache/wal/sequences &)
+
+# Alternative (blocks terminal for 0-3ms)
+cat ~/.cache/wal/sequences
+
+# To add support for TTYs this line can be optionally added.
+
+wal-tile() {
+    wal -n -i "$@"
+    feh --bg-scale "$(< "${HOME}/.cache/wal/wal")"
+}
+
